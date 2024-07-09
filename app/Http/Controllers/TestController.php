@@ -51,9 +51,6 @@ class TestController extends Controller
             }else {
                 if((int)$value >= (int)$newArray[count($newArray) - 1]){
                     array_push($newArray, $value);
-                    if($key == 4){
-                        dd($array, $newArray);
-                    }
                     
                 }else {
                     foreach($newArray as $key2 => $value2) {
