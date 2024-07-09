@@ -22,7 +22,7 @@ class TestController extends Controller
         $result = '';
         $i = 0;
         while($loop) {
-            $alphabet = substr($data['inputanSoal1'], 1, 1);
+            $alphabet = substr($data['inputanSoal1'], 0, 1);
 
             $data['inputanSoal1'] = str_replace($alphabet, '', $data['inputanSoal1']);
 
@@ -31,11 +31,6 @@ class TestController extends Controller
             if(strlen($data['inputanSoal1']) == 0) {
                 $loop = false;
             }
-
-            if($i == 10) {
-                $loop = false;
-            }
-            $i++;
         }
         // set session
         $request->session()->put('resultSoal1', $result);
