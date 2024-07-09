@@ -45,5 +45,31 @@
                     {{ session()->forget('resultSoal2') }}
                 @endif
             </form>
+            <hr>
+            <form action="/testSoal3" method="POST">
+                @csrf
+                <h5>Soal nomor 3</h5>
+                <input type="radio" class="form-control" name="inputanSoal3tipe" value="a"> Barang Tipe A
+                <input type="radio" class="form-control" name="inputanSoal3tipe" value="b"> Barang Tipe B
+                <br>
+                <label for="">Total</label>
+                <input type="number" class="form-control" name="inputanSoal3total">
+                <br>
+                <hr>
+                <input type="radio" class="form-control" name="inputanSoal3hari" value="senin"> Senin
+                <input type="radio" class="form-control" name="inputanSoal3hari" value="selasa"> Selasa
+                <input type="radio" class="form-control" name="inputanSoal3hari" value="rabu"> Rabu
+                <input type="radio" class="form-control" name="inputanSoal3hari" value="kamis"> Kamis
+                <input type="radio" class="form-control" name="inputanSoal3hari" value="jumat"> Jumat
+                <input type="radio" class="form-control" name="inputanSoal3hari" value="sabtu"> Sabtu
+                <input type="radio" class="form-control" name="inputanSoal3hari" value="minggu"> Minggu
+                <br>
+                <button type="submit">Submit</button>
+                {{-- check session apakah ada --}}
+                @if (session()->get('resultSoal3', '') != '')
+                    <h4>JAWABANNYA : {{session()->get('resultSoal3', ''); }}</h4>
+                    {{ session()->forget('resultSoal3') }}
+                @endif
+            </form>
     </body>
 </html>

@@ -69,5 +69,47 @@ class TestController extends Controller
         $request->session()->put('resultSoal2', $result);
         return redirect('/');
     }
+
+    public function hitungSoalNomor3(Request $request)
+    {
+        $data = $request->all();
+        
+        $tipe = $data['inputanSoal3tipe'];
+        $jumlah = $data['inputanSoal3total'];
+        $hari = $data['inputanSoal3hari'];
+
+        $tipeA = 99900;
+        $tipeB = 49900;
+        $setDiskon1 = 0;
+        $setDiskon2 = 0;
+
+        $result = 0;
+
+        if ($tipe == 'a') {
+            if ($jumlah > 50) {
+                $setDiskon1 = 0.05;
+            }
+
+            if ($hari == 'senin' || $hari == 'kamis') {
+                $setDiskon2 = 0.1;
+            }
+
+            $result = $tipeA * $jumlah - ($tipeA * $jumlah * $setDiskon1) - ($tipeA * $jumlah * $setDiskon2);
+        }else {
+            if ($jumlah > 100) {
+                $setDiskon1 = 0.1;
+            }
+
+            if ($hari == 'jumat') {
+                $setDiskon2 = 0.05;
+            }
+            
+            $result = $tipeB * $jumlah - ($tipeB * $jumlah * $setDiskon1) - ($tipeB * $jumlah * $setDiskon2);
+        }
+        
+        // set session
+        $request->session()->put('resultSoal3', 'Rp.'.$result);
+        return redirect('/');
+    }
     
 }
